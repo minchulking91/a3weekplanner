@@ -1,0 +1,19 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="Theme.Planner" parent="Theme.MaterialComponents.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryVariant</item>
+        <item name="android:windowBackground">@color/colorPrimaryVariant2</item>
+        <item name="colorAccent">@color/colorSecondary</item>
+        <item name="android:textColorPrimary">@color/onPrimary</item>
+    </style>
+
+    <style name="Widget.Planner.BottomAppBar" parent="Widget.MaterialComponents.BottomAppBar.Colored">
+        <item name="android:theme">@style/Theme.Planner</item>
+        <item name="android:background">?attr/colorAccent</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+    </style>
+
+</resources>
