@@ -73,6 +73,7 @@ dependencies {
     testImplementation Deps.junit
     androidTestImplementation Deps.junit
     androidTestImplementation Deps.room_testing
+    androidTestImplementation Deps.arch_core_testing
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha3'
 }

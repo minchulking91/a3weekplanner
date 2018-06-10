@@ -67,7 +67,7 @@ object Deps {
     const val lifecycle_java8 = "androidx.lifecycle:lifecycle-common-java8:${Versions.lifecycle}"
     const val lifecycle_compiler = "androidx.lifecycle:lifecycle-compiler:${Versions.lifecycle}"
 
-    const val arch_core_testing = "android.arch.core:core-testing:${Versions.lifecycle}"
+    const val arch_core_testing = "androidx.arch.core:core-testing:${Versions.lifecycle}"
 
     //refrofit
     const val retrofit_runtime = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"

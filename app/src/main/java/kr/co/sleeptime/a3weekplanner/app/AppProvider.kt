@@ -13,26 +13,4 @@ class AppProvider(private val app: Application) {
     private val habitRepository: HabitRepository by lazy { HabitRepository(database) }
     private val habitEventRepository: HabitEventRepository by lazy { HabitEventRepository(database) }
 
-    /*
-    UseCase
-     */
-    fun getCreateHabit(): CreateHabit {
-        return CreateHabit(habitRepository)
-    }
-
-    fun getCheckHabit(): CheckHabit {
-        return CheckHabit(habitEventRepository)
-    }
-
-    fun getCheckListByDate(): TodayCheckList {
-        return TodayCheckList(habitRepository, habitEventRepository)
-    }
-
-    fun getHistory(): LoadHistory {
-        return LoadHistory()
-    }
-
-    fun getHistoryByDate(): HistoryByDate {
-        return HistoryByDate()
-    }
 }
