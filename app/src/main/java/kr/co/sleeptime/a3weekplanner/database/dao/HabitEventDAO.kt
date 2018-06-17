@@ -1,8 +1,35 @@
 package kr.co.sleeptime.a3weekplanner.database.dao
 
-import androidx.room.Dao
+import androidx.room.*
+import io.reactivex.Flowable
+import kr.co.sleeptime.a3weekplanner.database.entity.HabitCheckEntity
+import kr.co.sleeptime.a3weekplanner.database.entity.HabitMemoEntity
+import org.threeten.bp.LocalDate
 
 @Dao
 interface HabitEventDAO {
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertHabitMemo(vararg habitMemoEntity: HabitMemoEntity)
+
+    @Delete
+    fun deleteHabitMemo(vararg habitMemoEntity: HabitMemoEntity)
+
+    @Query("SELECT * FROM habit_memos WHERE uuid = :uuid")
+    fun loadHabitMemosByUUID(uuid: String): Flowable<HabitMemoEntity>
+
+    @Query("SELECT * FROM habit_memos WHERE date= :localDate")
+    fun loadHabitMemosByDate(localDate: LocalDate): Flowable<HabitMemoEntity>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertHabitCheck(vararg habitCheckEntity: HabitCheckEntity)
+
+    @Delete
+    fun deleteHabitCheck(vararg habitCheckEntity: HabitCheckEntity)
+
+    @Query("SELECT * FROM habit_events WHERE uuid = :uuid")
+    fun loadHabitChecksByUUID(uuid: String): Flowable<HabitCheckEntity>
+
+    @Query("SELECT * FROM habit_events WHERE checked_at > :startDate AND checked_at < :endDate")
+    fun loadHabitChecksByDaysBetween(startDate: LocalDate, endDate: LocalDate): Flowable<HabitCheckEntity>
 
 }
