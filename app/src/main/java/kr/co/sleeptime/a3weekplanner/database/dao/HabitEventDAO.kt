@@ -1,7 +1,7 @@
 package kr.co.sleeptime.a3weekplanner.database.dao
 
 import androidx.room.*
-import io.reactivex.Flowable
+import io.reactivex.Single
 import kr.co.sleeptime.a3weekplanner.database.entity.HabitCheckEntity
 import kr.co.sleeptime.a3weekplanner.database.entity.HabitMemoEntity
 import org.threeten.bp.LocalDate
@@ -15,10 +15,10 @@ interface HabitEventDAO {
     fun deleteHabitMemo(vararg habitMemoEntity: HabitMemoEntity)
 
     @Query("SELECT * FROM habit_memos WHERE uuid = :uuid")
-    fun loadHabitMemosByUUID(uuid: String): Flowable<HabitMemoEntity>
+    fun loadHabitMemosByUUID(uuid: String): Single<List<HabitMemoEntity>>
 
     @Query("SELECT * FROM habit_memos WHERE date= :localDate")
-    fun loadHabitMemosByDate(localDate: LocalDate): Flowable<HabitMemoEntity>
+    fun loadHabitMemosByDate(localDate: LocalDate): Single<List<HabitMemoEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertHabitCheck(vararg habitCheckEntity: HabitCheckEntity)
@@ -27,9 +27,9 @@ interface HabitEventDAO {
     fun deleteHabitCheck(vararg habitCheckEntity: HabitCheckEntity)
 
     @Query("SELECT * FROM habit_events WHERE uuid = :uuid")
-    fun loadHabitChecksByUUID(uuid: String): Flowable<HabitCheckEntity>
+    fun loadHabitChecksByUUID(uuid: String): Single<List<HabitCheckEntity>>
 
     @Query("SELECT * FROM habit_events WHERE checked_at > :startDate AND checked_at < :endDate")
-    fun loadHabitChecksByDaysBetween(startDate: LocalDate, endDate: LocalDate): Flowable<HabitCheckEntity>
+    fun loadHabitChecksByDaysBetween(startDate: LocalDate, endDate: LocalDate): Single<List<HabitCheckEntity>>
 
 }

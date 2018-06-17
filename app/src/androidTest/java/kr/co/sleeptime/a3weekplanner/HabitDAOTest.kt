@@ -89,13 +89,8 @@ class HabitDAOTest {
                 .test()
                 .assertValue {
                     val habit = HabitMapper.toModel(it)
-                    try {
-                        Preconditions.checkState(habit.checkIsIn(queryDate))
-                        true
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                        false
-                    }
+                    val mustBeNull = habit.find { !it.checkIsIn(queryDate) }
+                    mustBeNull == null
                 }
     }
 
@@ -112,15 +107,9 @@ class HabitDAOTest {
                 .test()
                 .assertValue {
                     val habit = HabitMapper.toModel(it)
-                    try {
-                        Preconditions.checkState(habit.checkIsIn(queryDate))
-                        Preconditions.checkState(!habit.isCanceled)
-                        Preconditions.checkState(habit.state == HabitState.PROGRESS)
-                        true
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                        false
-                    }
+                    habit.find {
+                        !(it.checkIsIn(queryDate) && !it.isCanceled && it.getState(LocalDate.now()) == HabitState.PROGRESS)
+                    } == null
                 }
     }
 
@@ -136,20 +125,9 @@ class HabitDAOTest {
         habitDAO.loadHabitsByDate(queryDate)
                 .test()
                 .assertValue {
-                    when {
-                        it.uuid == createHabit1.uuid -> {
-                            createHabit1 == it
-                        }
-                        it.uuid == createHabit2.uuid -> {
-                            createHabit2 == it
-                        }
-                        it.uuid == createHabit3.uuid -> {
-                            createHabit3 == it
-                        }
-                        else -> {
-                            false
-                        }
-                    }
+                    it.find {
+                        !(it.uuid == createHabit1.uuid || it.uuid == createHabit2.uuid || it.uuid == createHabit3.uuid)
+                    } == null
                 }
     }
 

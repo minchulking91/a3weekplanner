@@ -34,6 +34,22 @@ data class Habit(
     }
 
     val isCanceled: Boolean get() = canceledAt != null
+    fun getState(queryDate: LocalDate): HabitState {
+        when {
+            isCanceled -> {
+                return HabitState.CANCELED
+            }
+            startDate.isAfter(queryDate) -> {
+                return HabitState.SCHEDULED
+            }
+            checkIsIn(queryDate) -> {
+                return HabitState.PROGRESS
+            }
+        }
+        return HabitState.COMPLETE
+    }
+
+    @Deprecated("use getState() instead")
     val state: HabitState
         get() {
             val today = LocalDate.now()

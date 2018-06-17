@@ -15,11 +15,19 @@ object HabitEventMapper {
         return HabitMemo(habitMemoEntity.uuid, habitMemoEntity.memo, habitMemoEntity.date)
     }
 
+    fun toMemoModelList(habitMemoEntities: List<HabitMemoEntity>): List<HabitMemo> {
+        return habitMemoEntities.map { toModel(it) }
+    }
+
     fun toEntity(habitCheck: HabitCheck): HabitCheckEntity {
         return HabitCheckEntity(habitCheck.uuid, habitCheck.checkedAt)
     }
 
     fun toModel(habitCheckEntity: HabitCheckEntity): HabitCheck {
         return HabitCheck(habitCheckEntity.uuid, habitCheckEntity.checkedAt)
+    }
+
+    fun toCheckModelList(habitCheckEntities: List<HabitCheckEntity>): List<HabitCheck> {
+        return habitCheckEntities.map { toModel(it) }
     }
 }

@@ -19,10 +19,10 @@ interface HabitDAO {
     fun loadHabits(): Flowable<HabitEntity>
 
     @Query("SELECT * FROM habits WHERE :date BETWEEN start_date AND end_date")
-    fun loadHabitsByDate(date: LocalDate): Flowable<HabitEntity>
+    fun loadHabitsByDate(date: LocalDate): Single<List<HabitEntity>>
 
     @Query("SELECT * FROM habits WHERE (:date BETWEEN start_date AND end_date) AND canceled_at IS NULL")
-    fun loadActiveHabitsByDate(date: LocalDate): Flowable<HabitEntity>
+    fun loadActiveHabitsByDate(date: LocalDate): Single<List<HabitEntity>>
 
     @Query("SELECT * FROM habits WHERE uuid = :uuid LIMIT 1")
     fun loadHabit(uuid: String): Single<HabitEntity>

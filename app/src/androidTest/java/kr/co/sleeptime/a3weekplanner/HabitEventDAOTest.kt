@@ -52,7 +52,8 @@ class HabitEventDAOTest {
         habitEventDAO.loadHabitMemosByUUID(createHabit1.uuid)
                 .test()
                 .assertValue {
-                    it.memo == "memo" && it.date == LocalDate.now()
+                    it.size == 1 &&
+                            it.first().memo == "memo" && it.first().date == LocalDate.now()
                 }
     }
 
@@ -68,7 +69,8 @@ class HabitEventDAOTest {
         habitEventDAO.loadHabitMemosByUUID(createHabit1.uuid)
                 .test()
                 .assertValue {
-                    it.memo == "memo modified" && it.date == LocalDate.now()
+                    it.size == 1 &&
+                            it.first().memo == "memo modified" && it.first().date == LocalDate.now()
                 }
     }
 
@@ -83,7 +85,8 @@ class HabitEventDAOTest {
         habitEventDAO.loadHabitMemosByDate(LocalDate.now())
                 .test()
                 .assertValue {
-                    it.memo == "memo" && it.date == LocalDate.now()
+                    it.size == 1 &&
+                            it.first().memo == "memo" && it.first().date == LocalDate.now()
                 }
     }
 
@@ -95,11 +98,15 @@ class HabitEventDAOTest {
         val habitCheckEntity = HabitCheck(createHabit1.uuid, LocalDateTime.now()).let { HabitEventMapper.toEntity(it) }
         habitDAO.insertHabit(createHabit1)
         habitEventDAO.insertHabitCheck(habitCheckEntity)
+        habitEventDAO.insertHabitCheck(habitCheckEntity.copy(checkedAt = LocalDateTime.now().plusDays(1)))
         val queryDate = LocalDate.now()
-        habitEventDAO.loadHabitChecksByDaysBetween(queryDate, queryDate.plusDays(1))
+        habitEventDAO.loadHabitChecksByDaysBetween(queryDate, queryDate.plusDays(2))
                 .test()
                 .assertValue {
-                    it.uuid == createHabit1.uuid && it.checkedAt.toLocalDate() == LocalDate.now()
+                    it.size == 2 &&
+                            it.find {
+                                !(it.uuid == createHabit1.uuid && (it.checkedAt.toLocalDate() == LocalDate.now() || it.checkedAt.toLocalDate() == LocalDate.now().plusDays(1)))
+                            } == null
                 }
     }
 }
