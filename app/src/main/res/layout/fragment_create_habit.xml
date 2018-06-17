@@ -1,36 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="?android:windowBackground"
-    android:theme="@style/Theme.Planner">
+<layout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+
+        <variable
+            name="createHabitVM"
+            type="kr.co.sleeptime.a3weekplanner.view.createhabit.CreateHabitVM" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingHorizontal="@dimen/activity_horizontal_margin"
-        android:paddingVertical="@dimen/activity_vertical_margin">
+        android:layout_height="wrap_content"
+        android:background="?android:windowBackground"
+        android:theme="@style/Theme.Planner">
 
-        <EditText
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_vertical_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/activity_horizontal_margin" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_vertical_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/activity_horizontal_margin" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_horizontal_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="@dimen/activity_vertical_margin" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_horizontal_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="@dimen/activity_vertical_margin" />
+
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/titleEditText"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="title"
+            android:imeOptions="actionNext"
             android:inputType="text"
             android:maxLines="1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toTopOf="@+id/descriptionEditText"
+            app:layout_constraintEnd_toEndOf="@+id/guide_vertical_end"
+            app:layout_constraintStart_toStartOf="@+id/guide_vertical_start"
+            app:layout_constraintTop_toTopOf="@+id/guide_horizontal_top" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/descriptionEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="description"
+            android:visibility="@{createHabitVM.descriptionVisible ? View.VISIBLE : View.GONE, default = gone}"
+            app:layout_constraintBottom_toTopOf="@+id/chipsScrollView"
+            app:layout_constraintEnd_toEndOf="@+id/guide_vertical_end"
+            app:layout_constraintStart_toStartOf="@+id/guide_vertical_start"
+            app:layout_constraintTop_toBottomOf="@+id/titleEditText" />
 
         <HorizontalScrollView
             android:id="@+id/chipsScrollView"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             app:layout_constraintBottom_toTopOf="@+id/saveButton"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleEditText">
+            app:layout_constraintEnd_toEndOf="@+id/guide_vertical_end"
+            app:layout_constraintStart_toStartOf="@+id/guide_vertical_start"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionEditText">
 
             <com.google.android.material.chip.ChipGroup
                 android:layout_width="wrap_content"
@@ -51,14 +99,76 @@
             </com.google.android.material.chip.ChipGroup>
         </HorizontalScrollView>
 
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:tint="#FFFFFF"
+            android:id="@+id/collapseOptionButton"
+            style="@style/Widget.AppCompat.ActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{createHabitVM::onClickCollapse}"
+            android:src="@drawable/add_cancel_collapse_anim"
+            android:visibility="@{createHabitVM.expandButton ? View.VISIBLE : View.GONE, default = gone}"
+            app:layout_constraintBottom_toBottomOf="@+id/guide_horizontal_bottom"
+            app:layout_constraintStart_toStartOf="@+id/guide_vertical_start"
+            app:layout_constraintTop_toBottomOf="@+id/chipsScrollView" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/expandOptionButton"
+            style="@style/Widget.AppCompat.ActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{createHabitVM::onClickExpand}"
+            android:src="@drawable/add_cancel_expand_anim"
+            android:tint="@color/colorSecondary"
+            android:visibility="@{createHabitVM.expandButton ? View.GONE: View.VISIBLE, default = visible}"
+            app:layout_constraintBottom_toBottomOf="@+id/guide_horizontal_bottom"
+            app:layout_constraintStart_toStartOf="@+id/guide_vertical_start"
+            app:layout_constraintTop_toBottomOf="@+id/chipsScrollView" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/optionButtonBarrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="end"
+            app:constraint_referenced_ids="expandOptionButton, collapseOptionButton" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/addDescriptionButton"
+            style="@style/Widget.AppCompat.ActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:onClick="@{()->createHabitVM.onClickAddDescription()}"
+            android:src="@drawable/round_notes_24"
+            android:visibility="@{createHabitVM.expandButton ? View.VISIBLE: View.GONE, default = gone}"
+            app:layout_constraintBottom_toBottomOf="@+id/guide_horizontal_bottom"
+            app:layout_constraintStart_toEndOf="@+id/optionButtonBarrier"
+            app:layout_constraintTop_toBottomOf="@+id/chipsScrollView" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/addAlarm"
+            style="@style/Widget.AppCompat.ActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:onClick="@{()->createHabitVM.onClickAddAlarm()}"
+            android:src="@drawable/round_alarm_add_24"
+            android:visibility="@{createHabitVM.expandButton ? View.VISIBLE: View.GONE, default = gone}"
+            app:layout_constraintBottom_toBottomOf="@+id/guide_horizontal_bottom"
+            app:layout_constraintStart_toEndOf="@+id/addDescriptionButton"
+            app:layout_constraintTop_toBottomOf="@+id/chipsScrollView" />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/saveButton"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:onClick="@{()->createHabitVM.onClickSave()}"
             android:text="save"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/guide_horizontal_bottom"
+            app:layout_constraintEnd_toEndOf="@+id/guide_vertical_end"
             app:layout_constraintTop_toBottomOf="@+id/chipsScrollView" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.core.widget.NestedScrollView>
+</layout>
