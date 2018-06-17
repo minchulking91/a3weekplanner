@@ -1,0 +1,94 @@
+{
+  "project_info": {
+    "project_number": "708964728150",
+    "firebase_url": "https://a3weekplanner.firebaseio.com",
+    "project_id": "a3weekplanner",
+    "storage_bucket": "a3weekplanner.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:708964728150:android:310a7a2d5755f817",
+        "android_client_info": {
+          "package_name": "kr.co.sleeptime.a3weekplanner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "708964728150-vpdfkoo3ff5t4i5bhjsmr70os5ijev58.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kr.co.sleeptime.a3weekplanner",
+            "certificate_hash": "0aba13904bc82470e1b6198891d1795ef5e189a7"
+          }
+        },
+        {
+          "client_id": "708964728150-qt9cr6eg5mbs9si4n4j0l4dl081jrglc.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "708964728150-qt9cr6eg5mbs9si4n4j0l4dl081jrglc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBj7vfK6ynXyeaZTe1Wv94VG99JsPO2H_8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "708964728150-qt9cr6eg5mbs9si4n4j0l4dl081jrglc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:708964728150:android:40bea081f6a32d57",
+        "android_client_info": {
+          "package_name": "kr.co.sleeptime.a3weekplanner.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "708964728150-qt9cr6eg5mbs9si4n4j0l4dl081jrglc.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "708964728150-qt9cr6eg5mbs9si4n4j0l4dl081jrglc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBj7vfK6ynXyeaZTe1Wv94VG99JsPO2H_8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

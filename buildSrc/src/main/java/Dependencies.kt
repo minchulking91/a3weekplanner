@@ -1,6 +1,6 @@
 object Versions {
     const val anko = "0.10.5"
-    const val androidx = "1.0.0-alpha1"
+    const val androidx = "1.0.0-alpha3"
     const val dagger = "2.11"
     const val junit = "4.12"
     const val espresso = "3.0.1"
@@ -8,10 +8,10 @@ object Versions {
     const val okhttp_logging_interceptor = "3.9.0"
     const val mockito = "2.9.0"
     const val mockito_all = "1.10.19"
-    const val constraint_layout = "1.1.0"
+    const val constraint_layout = "1.1.2"
     const val glide = "4.5.0"
     const val timber = "4.5.1"
-    const val android_gradle_plugin = "3.2.0-alpha15"
+    const val android_gradle_plugin = "3.2.0-alpha18"
     const val rx_android = "2.0.2"
     const val rxkotlin2 = "2.2.0"
     const val gson = "2.8.5"
@@ -38,7 +38,7 @@ object Deps {
     const val annotations = "androidx.annotation:annotation :${Versions.androidx}"
     const val app_compat = "androidx.appcompat:appcompat:${Versions.androidx}"
     const val recyclerview = "androidx.recyclerview:recyclerview:${Versions.androidx}"
-    const val cardview = "\tandroidx.cardview:cardview:${Versions.androidx}"
+    const val cardview = "androidx.cardview:cardview:${Versions.androidx}"
     const val material = "com.google.android.material:material:${Versions.androidx}"
     const val constraint_layout_solver = "androidx.constraintlayout:constraintlayout-solver:${Versions.constraint_layout}"
     const val constraint_layout = "androidx.constraintlayout:constraintlayout:${Versions.constraint_layout}"
@@ -123,10 +123,9 @@ object Deps {
 }
 
 object Configs {
-    const val min_sdk = 26
-    const val compile_sdk = "android-P"
-    const val target_sdk = "27"
-    const val build_tools = "28.0.0 rc2"
+    const val min_sdk = 21
+    const val compile_sdk = 28
+    const val target_sdk = 28
     const val version_code = 1
     const val version_name = "0.0.1"
 

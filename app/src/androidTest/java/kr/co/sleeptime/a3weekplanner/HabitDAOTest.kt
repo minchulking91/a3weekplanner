@@ -1,10 +1,10 @@
 package kr.co.sleeptime.a3weekplanner
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.core.util.Preconditions
 import androidx.room.EmptyResultSetException
 import androidx.room.Room
 import androidx.test.InstrumentationRegistry
-import androidx.test.espresso.core.internal.deps.guava.base.Preconditions
 import kr.co.sleeptime.a3weekplanner.database.PlannerDatabase
 import kr.co.sleeptime.a3weekplanner.database.dao.HabitDAO
 import kr.co.sleeptime.a3weekplanner.database.mapper.HabitMapper

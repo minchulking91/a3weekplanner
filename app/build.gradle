@@ -4,6 +4,7 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion Configs.compile_sdk
@@ -21,54 +22,33 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    dataBinding {
+    dataBinding{
         enabled = true
     }
-    buildToolsVersion Configs.build_tools
     productFlavors {
     }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation Deps.kotlin_stdlib
+    implementation 'com.google.firebase:firebase-core:16.0.1'
 
-    implementation Deps.androidx_core
-    implementation Deps.lifecycle_extensions
-    implementation Deps.lifecycle_java8
+    implementation Deps.kotlin_stdlib
     implementation Deps.app_compat
+    implementation Deps.lifecycle_extensions
+    kapt Deps.lifecycle_compiler
     implementation Deps.constraint_layout
     implementation Deps.constraint_layout_solver
     implementation Deps.material
-    implementation Deps.recyclerview
     implementation Deps.rxkotlin2
     implementation Deps.rx_android
-    implementation Deps.retrofit_runtime
-    implementation Deps.retrofit_gson
-    implementation Deps.retrofit_rxjava2
-    implementation Deps.okhttp_logging_interceptor
-    implementation Deps.gson
-    implementation Deps.guava
-    implementation Deps.anko
-    implementation Deps.anko_appcompat_v7
-    implementation Deps.anko_design
-    implementation Deps.anko_constraint
-    implementation Deps.anko_recyclerview
     implementation Deps.room_runtime
     implementation Deps.room_rxjava2
     kapt Deps.room_compiler
     implementation "com.jakewharton.threetenabp:threetenabp:1.1.0"
 
-    //for log
-    implementation 'org.slf4j:slf4j-android:1.7.25'
-    //    implementation 'com.github.tony19:logback-android:1.1.1-11'
-
     //for test
-    implementation 'com.google.code.findbugs:jsr305:2.0.1'
+    implementation 'com.google.code.findbugs:jsr305:3.0.2'
     implementation Deps.junit
     testImplementation Deps.junit
     androidTestImplementation Deps.junit
