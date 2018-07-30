@@ -1,4 +1,4 @@
-package kr.co.sleeptime.a3weekplanner.view.createhabit
+package kr.co.sleeptime.a3weekplanner.ui.createhabit
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import kr.co.sleeptime.a3weekplanner.R
 import kr.co.sleeptime.a3weekplanner.databinding.FragmentCreateHabitBinding
-import kr.co.sleeptime.a3weekplanner.view.base.BaseBottomSheetFragment
+import kr.co.sleeptime.a3weekplanner.ui.base.BaseBottomSheetFragment
 
 
 class CreateHabitFragment : BaseBottomSheetFragment() {

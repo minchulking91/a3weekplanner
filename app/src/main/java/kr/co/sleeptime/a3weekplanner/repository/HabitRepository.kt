@@ -1,6 +1,5 @@
 package kr.co.sleeptime.a3weekplanner.repository
 
-import io.reactivex.Flowable
 import io.reactivex.Single
 import kr.co.sleeptime.a3weekplanner.database.dao.HabitDAO
 import kr.co.sleeptime.a3weekplanner.database.mapper.HabitMapper

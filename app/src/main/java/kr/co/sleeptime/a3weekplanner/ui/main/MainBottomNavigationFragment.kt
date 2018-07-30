@@ -1,11 +1,11 @@
-package kr.co.sleeptime.a3weekplanner.view.main
+package kr.co.sleeptime.a3weekplanner.ui.main
 
 import android.view.MenuItem
 import android.view.View
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.fragment_main_bottom_navigation.*
 import kr.co.sleeptime.a3weekplanner.R
-import kr.co.sleeptime.a3weekplanner.view.base.BaseBottomSheetFragment
+import kr.co.sleeptime.a3weekplanner.ui.base.BaseBottomSheetFragment
 
 
 class MainBottomNavigationFragment : BaseBottomSheetFragment(), NavigationView.OnNavigationItemSelectedListener {

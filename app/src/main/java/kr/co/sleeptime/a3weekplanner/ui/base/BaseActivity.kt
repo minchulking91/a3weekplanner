@@ -1,4 +1,4 @@
-package kr.co.sleeptime.a3weekplanner.view.base
+package kr.co.sleeptime.a3weekplanner.ui.base
 
 import android.os.Bundle
 import androidx.annotation.LayoutRes

@@ -1,4 +1,4 @@
-package kr.co.sleeptime.a3weekplanner.view.main
+package kr.co.sleeptime.a3weekplanner.ui.main
 
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
@@ -6,8 +6,8 @@ import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.activity_main.*
 import kr.co.sleeptime.a3weekplanner.R
 import kr.co.sleeptime.a3weekplanner.databinding.ActivityMainBinding
-import kr.co.sleeptime.a3weekplanner.view.base.BaseActivity
-import kr.co.sleeptime.a3weekplanner.view.createhabit.CreateHabitFragment
+import kr.co.sleeptime.a3weekplanner.ui.base.BaseActivity
+import kr.co.sleeptime.a3weekplanner.ui.createhabit.CreateHabitFragment
 
 
 class MainActivity : BaseActivity() {

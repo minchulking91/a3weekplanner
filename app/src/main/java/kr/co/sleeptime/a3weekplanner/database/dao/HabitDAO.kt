@@ -1,7 +1,6 @@
 package kr.co.sleeptime.a3weekplanner.database.dao
 
 import androidx.room.*
-import io.reactivex.Flowable
 import io.reactivex.Single
 import kr.co.sleeptime.a3weekplanner.database.entity.HabitEntity
 import org.threeten.bp.LocalDate
@@ -16,7 +15,7 @@ interface HabitDAO {
     fun deleteHabit(vararg habitEntity: HabitEntity)
 
     @Query("SELECT * FROM habits")
-    fun loadHabits(): Flowable<HabitEntity>
+    fun loadHabits(): Single<List<HabitEntity>>
 
     @Query("SELECT * FROM habits WHERE :date BETWEEN start_date AND end_date")
     fun loadHabitsByDate(date: LocalDate): Single<List<HabitEntity>>

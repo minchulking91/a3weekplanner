@@ -7,12 +7,12 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdkVersion Configs.compile_sdk
+    compileSdkVersion configs.compile_sdk
     defaultConfig {
         applicationId "kr.co.sleeptime.a3weekplanner"
-        minSdkVersion Configs.min_sdk
-        targetSdkVersion Configs.target_sdk
-        versionName Configs.version_name
+        minSdkVersion configs.min_sdk
+        targetSdkVersion configs.target_sdk
+        versionName configs.version_name
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
@@ -22,7 +22,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    dataBinding{
+    dataBinding {
         enabled = true
     }
     productFlavors {
@@ -33,27 +33,30 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.google.firebase:firebase-core:16.0.1'
 
-    implementation Deps.kotlin_stdlib
-    implementation Deps.app_compat
-    implementation Deps.lifecycle_extensions
-    kapt Deps.lifecycle_compiler
-    implementation Deps.constraint_layout
-    implementation Deps.constraint_layout_solver
-    implementation Deps.material
-    implementation Deps.rxkotlin2
-    implementation Deps.rx_android
-    implementation Deps.room_runtime
-    implementation Deps.room_rxjava2
-    kapt Deps.room_compiler
+    implementation libs.kotlin_stdlib
+    implementation libs.app_compat
+    implementation libs.lifecycle_extensions
+    implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0-alpha1'
+    kapt libs.lifecycle_compiler
+    implementation libs.constraint_layout
+    implementation libs.constraint_layout_solver
+    implementation libs.material
+    implementation libs.rxkotlin2
+    implementation libs.rx_android
+    implementation libs.room_runtime
+    implementation libs.room_rxjava2
+    kapt libs.room_compiler
     implementation "com.jakewharton.threetenabp:threetenabp:1.1.0"
 
     //for test
     implementation 'com.google.code.findbugs:jsr305:3.0.2'
-    implementation Deps.junit
-    testImplementation Deps.junit
-    androidTestImplementation Deps.junit
-    androidTestImplementation Deps.room_testing
-    androidTestImplementation Deps.arch_core_testing
+    implementation libs.junit
+    testImplementation libs.junit
+    androidTestImplementation libs.junit
+    androidTestImplementation libs.room_testing
+    androidTestImplementation libs.arch_core_testing
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha3'
 }

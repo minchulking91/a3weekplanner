@@ -6,7 +6,7 @@
 
         <variable
             name="mainVM"
-            type="kr.co.sleeptime.a3weekplanner.view.main.MainVM" />
+            type="kr.co.sleeptime.a3weekplanner.ui.main.MainVM" />
     </data>
 
 

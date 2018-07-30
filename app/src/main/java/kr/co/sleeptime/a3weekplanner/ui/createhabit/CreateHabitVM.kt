@@ -1,4 +1,4 @@
-package kr.co.sleeptime.a3weekplanner.view.createhabit
+package kr.co.sleeptime.a3weekplanner.ui.createhabit
 
 import android.app.Application
 import android.graphics.drawable.AnimationDrawable

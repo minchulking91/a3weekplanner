@@ -1,4 +1,4 @@
-package kr.co.sleeptime.a3weekplanner.view.main
+package kr.co.sleeptime.a3weekplanner.ui.main
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
